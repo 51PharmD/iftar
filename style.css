@@ -12,6 +12,9 @@
 
 body, html {
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
@@ -57,6 +60,8 @@ main {
   width: 100%;
   max-width: 400px;
   padding: 8px;
+  overflow-y: auto; /* Enable scroll */
+  max-height: 100vh; /* Ensure it fits the viewport */
 }
 
 main .before, main .after {
@@ -124,7 +129,7 @@ ul li:nth-child(3) .notification {
 .notification {
   position: relative;
   overflow: hidden;
-  height: auto; /* Changed to auto for dynamic height */
+  height: auto; /* Dynamic height */
   min-height: 116px; /* Minimum height */
   padding: 16px;
   border-radius: 16px;
@@ -157,9 +162,14 @@ ul li:nth-child(3) .notification {
 }
 
 .notification .content .message {
-  white-space: normal; /* Allow text wrapping */
+  white-space: pre-line; /* Preserve newlines */
   overflow: visible;
   text-overflow: clip;
+}
+
+.notification .content a {
+  color: #1a73e8; /* Link color */
+  text-decoration: underline;
 }
 
 .notification .content .sender, .notification .content .event {
