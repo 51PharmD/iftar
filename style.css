@@ -14,7 +14,7 @@ body, html {
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden; /* Prevent scrolling issues */
 }
 
 body {
@@ -58,9 +58,10 @@ main {
   opacity: 0;
   will-change: opacity;
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Limit maximum width for larger screens */
   padding: 8px;
-  overflow-y: auto; /* Enable scroll */
+  margin: 0 auto; /* Center the main container */
+  overflow-y: auto; /* Enable scrolling for content */
   max-height: 100vh; /* Ensure it fits the viewport */
 }
 
@@ -135,6 +136,7 @@ ul li:nth-child(3) .notification {
   border-radius: 16px;
   background-color: rgba(255, 255, 255, 0.9);
   color: black;
+  margin-bottom: 16px; /* Space between notifications */
 }
 
 .notification header, .notification .more {
@@ -156,20 +158,27 @@ ul li:nth-child(3) .notification {
   text-transform: lowercase;
 }
 
-.notification .content span {
-  display: block;
-  line-height: 1.6; /* Improved line height for Arabic text */
+.notification .content {
+  direction: rtl; /* Ensure RTL direction */
+  text-align: right; /* Align text to the right */
+  unicode-bidi: bidi-override; /* Ensure proper rendering of RTL text */
 }
 
 .notification .content .message {
-  white-space: pre-line; /* Preserve newlines */
-  overflow: visible;
-  text-overflow: clip;
+  white-space: pre-line; /* Preserve line breaks */
+  line-height: 1.8; /* Improve readability for Arabic */
 }
 
 .notification .content a {
   color: #1a73e8; /* Link color */
   text-decoration: underline;
+}
+
+.notification .content img {
+  max-width: 100%; /* Ensure images don’t exceed container width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px;
+  margin-bottom: 16px; /* Space between image and text */
 }
 
 .notification .content .sender, .notification .content .event {
@@ -181,35 +190,21 @@ ul li:nth-child(3) .notification {
   font-size: 12px;
 }
 
-.notification .content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 16px; /* Space between image and text */
-}
-
 .notification .before, .notification .after {
   left: calc(50% - 50vw);
 }
 
-notification .content[dir="rtl"] {
-  text-align: right; /* Align text to the right */
-  direction: rtl; /* Ensure RTL direction */
-}
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 480px) {
+  main {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
 
-.notification .content[dir="rtl"] .message {
-  white-space: pre-line; /* Preserve line breaks */
-  line-height: 1.8; /* Improve readability for Arabic */
-}
+  .notification {
+    padding: 12px; /* Reduce padding for smaller screens */
+  }
 
-.notification .content[dir="rtl"] a {
-  color: #1a73e8; /* Link color */
-  text-decoration: underline;
-}
-
-.notification .content[dir="rtl"] img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 16px; /* Space between image and text */
+  .notification .content .message {
+    font-size: 14px; /* Slightly smaller font size for mobile */
+  }
 }
