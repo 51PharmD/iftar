@@ -191,3 +191,25 @@ ul li:nth-child(3) .notification {
 .notification .before, .notification .after {
   left: calc(50% - 50vw);
 }
+
+notification .content[dir="rtl"] {
+  text-align: right; /* Align text to the right */
+  direction: rtl; /* Ensure RTL direction */
+}
+
+.notification .content[dir="rtl"] .message {
+  white-space: pre-line; /* Preserve line breaks */
+  line-height: 1.8; /* Improve readability for Arabic */
+}
+
+.notification .content[dir="rtl"] a {
+  color: #1a73e8; /* Link color */
+  text-decoration: underline;
+}
+
+.notification .content[dir="rtl"] img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px; /* Space between image and text */
+}
