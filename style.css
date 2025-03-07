@@ -181,6 +181,13 @@ ul li:nth-child(3) .notification {
   font-size: 12px;
 }
 
+.notification .content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px; /* Space between image and text */
+}
+
 .notification .before, .notification .after {
   left: calc(50% - 50vw);
 }
